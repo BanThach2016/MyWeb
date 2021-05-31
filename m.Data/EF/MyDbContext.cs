@@ -1,5 +1,6 @@
 ﻿using m.Data.Configuration;
 using m.Data.Entity;
+using m.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace m.Data.EF
@@ -12,9 +13,8 @@ namespace m.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            // Configuration table
             // c1 add truc tiep cac config bang vao day
-
             // c2 tao class config rieng cho tung bang. khai bao vao day
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());  // khai bao tung class configuration cho bang
 
@@ -43,6 +43,10 @@ namespace m.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
 
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+
+            // Data seeding table
+            modelBuilder.Seed();
+            //base.OnModelCreating(modelBuilder);
         }
 
         // khai bao cac bang trong entity
